@@ -24,6 +24,10 @@ import admin from "./routes/admin.route.js";
 import notes from "./routes/notes.route.js";
 import playlist from "./routes/playlist.route.js";
 
+app.get("/", (req, res) => {
+  res.send("Server is working 🚀");
+});
+
 app.use("/student", student);
 app.use("/teacher", teacher);
 app.use("/course", course);
@@ -31,8 +35,5 @@ app.use("/admin", admin);
 app.use("/notes", notes);
 app.use("/playlist", playlist);
 
-app.get("/", (req, res) => {
-  res.send("Server is working 🚀");
-});
 
 export { app };
