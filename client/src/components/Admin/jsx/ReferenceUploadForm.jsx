@@ -33,7 +33,7 @@ const ReferenceUploadForm = ({ onClose }) => {
     formSubmission.append('youtube_link', formData.youtube_link);
 
     try {
-      const response = await protectedApi.post("/playlist/create", formSubmission, {
+      const response = await protectedApi.post("/playlist/create", {topic:formSubmission.topic,title:formSubmission.title,image:formSubmission.image,youtube_link:formSubmission.youtube_link}, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         withCredentials: true,
       });
