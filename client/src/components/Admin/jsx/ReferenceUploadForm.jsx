@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import styles from '../css/ReferenceUploadForm.module.css';
-import authApi from '../../../api/authApi.js';
+import protectedApi from '../../../api/protectedApi.js';
 
 
 const ReferenceUploadForm = ({ onClose }) => {
@@ -33,14 +33,16 @@ const ReferenceUploadForm = ({ onClose }) => {
     formSubmission.append('youtube_link', formData.youtube_link);
 
     try {
-      const response = await authApi.post("/playlist/create", formSubmission, { 
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-       });
-      if(response.data?.success){
+      const response = await protectedApi.post("/playlist/create", formSubmission, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        withCredentials: true,
+      });
+
+      if (response.data?.success) {
         toast.success(response.data?.message || "Reference added successfully");
         onClose();
       }
-      else{
+      else {
         toast.error(response.data?.message || "Something went wrong");
       }
     } catch (error) {
