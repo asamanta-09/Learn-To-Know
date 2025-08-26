@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import styles from '../css/ReferenceUploadForm.module.css';
 import protectedApi from '../../../api/protectedApi.js';
-import axios from 'axios';
 
 
 const ReferenceUploadForm = ({ onClose }) => {
@@ -13,8 +12,7 @@ const ReferenceUploadForm = ({ onClose }) => {
     image: null,
     youtube_link: ''
   });
-  const token = localStorage.getItem('token');
-  const backendURL = import.meta.env.VITE_BACKEND_URL;
+  const token = localStorage.getItem('token')
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === 'image') {
@@ -33,9 +31,12 @@ const ReferenceUploadForm = ({ onClose }) => {
     formSubmission.append('title', formData.title);
     formSubmission.append('image', formData.image);
     formSubmission.append('youtube_link', formData.youtube_link);
-    
+
     try {
-      const response = await axios.post(`${backendURL}/playlist/create`, formSubmission, { withCredentials: true ,headers: { Authorization: `Bearer ${token}` }, });
+      const response = await protectedApi.post("/playlist/create", formSubmission, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        withCredentials: true,
+      });
 
       if (response.data?.success) {
         toast.success(response.data?.message || "Reference added successfully");
