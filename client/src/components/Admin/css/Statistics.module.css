@@ -1,0 +1,30 @@
+.sectionTitle {
+  margin: 50px 15px 20px 200px;
+  width: 20%;
+  height: auto;
+  background: linear-gradient(270deg, #1e0b04, #ff7700db);
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.sectionpara{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    margin: 10px 0 10px 0;
+    width: 80%;
+    text-align: left;
+    font-size: 1rem;
+    padding: 8px;
+    background: linear-gradient(to right, #f0981c,#000000 );
+  }
+
+  .sectionpara {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+}

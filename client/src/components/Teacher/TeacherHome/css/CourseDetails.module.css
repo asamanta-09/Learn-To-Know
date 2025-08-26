@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.headingTitle h1 {
+  font-family: "Cinzel", serif;
+  font-size: 2.5rem;
+  color: #e28b20;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.headingTitle hr {
+  border: 1px solid #e28b20;
+}
+
+h2,
+h4 {
+  font-family: "Cinzel", serif;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ul li::before {
+  content: "•";
+  color: #e28b20;
+  margin-right: 5px;
+}
+
+/* Button Group */
+.buttonGroup {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editBtn,
+.backBtn {
+  margin-top: 50px;
+  margin-left: 20px;
+  width: 80%;
+  background: linear-gradient(90deg, #ff974c, #ff7700db);
+  color: #fff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.backBtn {
+  text-decoration: none;
+  text-align: center;
+}
+
+.editBtn:hover,
+.backBtn:hover {
+  transform: scale(1.07);
+  background: transparent;
+  border: 1px solid white;
+}
+
+/* Section */
+section {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-in forwards;
+}
+
+/* Course Intro */
+.courseIntro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.introContent {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.introText {
+  flex: 1;
+}
+
+.introImage {
+  flex: 1;
+  text-align: center;
+}
+
+.introImage img {
+  max-width: 70%;
+  border-radius: 10px;
+}
+
+.infoGrid {
+  display: flex;
+  justify-content: space-between;
+  gap: 29px;
+}
+
+/* Overview Section */
+.overview {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.overviewText {
+  flex: 1;
+}
+
+/* Video Section */
+.videoContainer {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.videoContainer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Topics Covered */
+.topicsCovered {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.topicsText {
+  flex: 1;
+}
+
+.topicsText ul li::before {
+  content: "✓";
+  color: #e28b20;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .courseIntro {
+    flex-direction: column;
+  }
+  .introText,
+  .introImage {
+    flex: 100%;
+  }
+}
+
+/* === Smartphone-specific tweaks === */
+@media (max-width: 480px) {
+  /* Narrow the container padding */
+  .container {
+    padding: 20px 10px;
+  }
+
+  /* Headings smaller and centered */
+  .headingTitle h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .headingTitle hr {
+    margin-bottom: 1rem;
+  }
+
+  /* Section padding reduced */
+  section {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  /* Stack course intro content vertically */
+  .courseIntro,
+  .overview,
+  .topicsCovered,
+  .infoGrid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .introText,
+  .introImage,
+  .overviewText,
+  .topicsText {
+    flex: 100%;
+  }
+
+  .introImage img {
+    max-width: 100%;
+  }
+
+  /* Make lists full‑width */
+  .ul,
+  .topicsText ul {
+    padding-left: 15px;
+  }
+
+  /* Button group: stack buttons */
+  .buttonGroup {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .editBtn,
+  .backBtn {
+    width: 80%;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 0.9rem;
+  }
+
+  /* Video containers full‑width */
+  .videoContainer {
+    width: 100%;
+    padding-bottom: 56.25%;
+  }
+
+  /* Reduce font sizes */
+  h2,
+  h4 {
+    font-size: 1.2rem;
+  }
+  p,
+  li {
+    font-size: 0.9rem;
+  }
+}

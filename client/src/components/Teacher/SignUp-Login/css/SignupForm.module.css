@@ -1,0 +1,445 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Cinzel+Decorative&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  color: #fff;
+}
+
+.signup_header {
+  position: fixed;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  padding: 5px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  min-height: 2px;
+  background: transparent;
+}
+
+.signup_header .signup_logo {
+  font-size: 1.7em;
+  color: #fff;
+  text-decoration: none;
+  font-family: "Cinzel", serif;
+}
+
+.signup_nav a {
+  position: relative;
+  font-size: 1.1em;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 40px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.signup_nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  background: #ff9900;
+  border-radius: 5px;
+  transform: scaleX(0);
+  transition: 0.5s;
+}
+
+.signup_nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.signup_home {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding: 80px 100px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.signup_home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("img3.webp") no-repeat center center/cover;
+  filter: blur(5px);
+  z-index: -1;
+}
+
+.signup_wrapper_login {
+  width: 400px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  margin-top: 80px;
+}
+
+.signup_wrapper_login h2 {
+  font-size: 1.6em;
+  color: #fff;
+  text-align: center;
+  font-family: "Cinzel", serif;
+  margin-bottom: 20px;
+}
+
+.signup_input_box {
+  position: relative;
+  width: 100%;
+  margin: 25px 0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Inputs */
+.signup_input_box input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  border-radius: 40px;
+  font-size: 1em;
+  color: #fff;
+  padding: 0 25px 0 45px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Textarea */
+.signup_input_box textarea {
+  width: 100%;
+  min-height: 120px;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+  outline: none;
+  border-radius: 30px;
+  font-size: 1em;
+  color: #fff;
+  padding: 20px 25px 10px 45px;
+  resize: both;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.signup_input_box select {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  border-radius: 40px;
+  font-size: 1em;
+  color: #000000;
+  padding: 0 25px 0 45px;
+  font-family: "Courier New", Courier, monospace;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.error_message {
+  color: rgb(255, 115, 0);
+  font-size: 12px;
+  position: relative;
+  left: 10%;
+}
+
+/* Label floating effect for select */
+.signup_input_box select:focus ~ label,
+.signup_input_box select:valid ~ label {
+  font-size: 0.8em;
+  top: -14px;
+  left: 17px;
+}
+
+/* Custom dropdown arrow using a background image (optional) */
+.signup_input_box select {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 20px;
+}
+.signup_input_box select:valid {
+  color: #fff;
+}
+
+/* Remove arrow for Firefox */
+.signup_input_box select::-ms-expand {
+  display: none;
+}
+
+/* Date Picker Icon */
+.signup_input_box input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Labels */
+.signup_input_box label {
+  position: absolute;
+  top: 50%;
+  left: 45px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Date field label position */
+.signup_input_box input[type="date"] + label {
+  top: 10px;
+  left: 47px;
+}
+
+/* Textarea label position */
+.signup_input_box textarea + label {
+  top: 21px;
+  left: 50px;
+  transform: translateY(0);
+}
+
+/* Floating effect on input focus or valid */
+.signup_input_box input:focus ~ label,
+.signup_input_box input:valid ~ label {
+  font-size: 0.8em;
+  top: -14px;
+  left: 17px;
+}
+
+.signup_input_box textarea:focus ~ label,
+.signup_input_box textarea:valid ~ label {
+  font-size: 0.8em;
+  top: -14px;
+  left: 17px;
+}
+
+/* Icon */
+.signup_input_box .signup_icon {
+  position: absolute;
+  font-size: 1.2em;
+  top: 18px;
+  color: #fff;
+  left: 15px;
+}
+
+.signup_btn {
+  width: 48%;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  background: linear-gradient(to right, #ff9900, #ff6600);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  font-size: 1em;
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+}
+
+.signup_btn_group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.signup_content {
+  max-width: 600px;
+  color: #fff;
+  padding-top: 40px;
+  margin-top: 200px;
+  margin-left: 140px;
+}
+
+.signup_content h3 {
+  font-size: 1.8em;
+  letter-spacing: 0.03em;
+  font-family: "Cinzel", serif;
+  margin-bottom: 20px;
+}
+
+.signup_content p {
+  margin: 10px 0 30px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.signup_content a {
+  background: linear-gradient(90deg, #e28b20, #ff7700db);
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid #fff;
+  font-weight: 500;
+  padding: 10px 40px;
+  border-radius: 40px;
+  transition: 0.5s;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.signup_content a:hover {
+  background: transparent;
+}
+
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.signup_content,
+.signup_wrapper_login {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* responsiveness
+/* Responsive adjustments */
+
+.login_menu_icon {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  margin: 15px 0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.close_btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .signup_home {
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 30px 50px;
+    gap: 30px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    scrollbar-width: none; /* hides scrollbar on Firefox */
+    background: transparent;
+  }
+
+  .signup_content {
+    margin: 0;
+    padding-top: 10px;
+    text-align: center;
+  }
+
+  .signup_content h3 {
+    font-size: 1.3em;
+  }
+
+  .signup_wrapper_login {
+    width: 100%;
+    margin: 0;
+  }
+
+  .signup_header {
+    padding: 20px 30px;
+  }
+
+  .signup_header {
+    display: flex;
+    align-items: flex-start;
+    font-size: medium;
+  }
+  .signup_wrapper_login {
+    width: 100%;
+  }
+  .signup_wrapper_login h2 {
+    font-size: 1.5rem;
+    margin-bottom: 70px;
+  }
+
+  .signup_input_box input,
+  .signup_input_box textarea,
+  .signup_input_box select {
+    padding-left: 40px;
+  }
+
+  .signup_input_box label {
+    left: 40px;
+  }
+  .signup_input_box input[type="date"] + label {
+    left: 42px;
+  }
+
+  .signup_input_box textarea + label {
+    left: 42px;
+  }
+
+  .signup_btn_group {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .signup_btn {
+    width: 100%;
+  }
+
+  .signup_content p {
+    display: none;
+  }
+  .leranmorelink {
+    display: none;
+  }
+  .signup_nav {
+    display: none;
+  }
+  .login_menu_icon {
+    display: block;
+  }
+}

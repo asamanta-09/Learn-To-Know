@@ -1,0 +1,112 @@
+.review_section {
+  background: transparent;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.heading {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  font-family: "Cinzel", serif;
+  color: #ff9900;
+  font-weight: 700;
+}
+
+.review_form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.stars {
+  margin-bottom: 1.5rem;
+}
+
+.stars input {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.submit_btn {
+  background-color: #ff9900;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit_btn:hover {
+  background-color: #e08600;
+}
+
+.select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+  appearance: none; /* Remove default OS styles */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'12'%20height%3D'8'%20viewBox%3D'0%200%2012%208'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M6%208L0%200h12L6%208z'%20fill%3D'%23999'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.65rem;
+}
+
+/* Responsive: tighten layout on mobile */
+@media (max-width: 768px) {
+  .review_form {
+    padding: 1.5rem 1rem;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .select {
+    font-size: 0.95rem;
+  }
+  .star {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .review_form {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+  }
+}

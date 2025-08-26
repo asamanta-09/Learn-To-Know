@@ -1,0 +1,36 @@
+.chart-container {
+  max-width: 500px;
+  padding: 20px;
+  background-color: transparent;
+  color: #fff;
+  margin: 50px 50px 50px 50px;
+  border-radius: 15px;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+    padding: 12px;
+    margin: 20px 10px;
+    border-radius: 10px;
+  }
+
+  .loading-text {
+    font-size: 14px;
+    padding: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .chart-container {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 10px;
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,47 @@
+.sub-menu {
+  background: rgb(255, 255, 255);
+  box-shadow: 2px 2px 15px 0 #0a0a0a9f;
+  color: #000000;
+  font-weight: 800;
+  z-index: 1;
+  width: 250px;
+  padding: 0;
+  margin-left: 10px;
+  border-radius: 15px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.course-submenu-item {
+  background-color: transparent;
+  background-color: initial;
+  border-bottom: none;
+  box-shadow: none;
+  color: #333;
+  display: block;
+  font-size: 100%;
+  padding-left: 10px;
+  padding-top: 6px;
+}
+
+.course-submenu-item:hover {
+  transform: scale(1.01);
+  background: linear-gradient(90deg,#e28b20,#ff7700db);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.item-name {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.hr-underline-course-nav {
+  padding: 0;
+  margin: 0;
+  width: 70%;
+  margin-left: 30px;
+}

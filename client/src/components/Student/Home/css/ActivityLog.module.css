@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Lilita+One&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+.activity-card-items {
+  display: flex;
+  gap: 50px;
+  margin-left: 50px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.activity-card {
+  position: relative;
+  height: 200px;
+  width: 300px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  cursor: pointer;
+  background: #fff;
+  transition: transform 0.7s, box-shadow 0.7s;
+  border: 1px solid #000000;
+}
+
+.activity-card-title {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  font-size: 22px;
+  font-weight: 00;
+  color: #000000;
+  font-family: "Lilita One", sans-serif;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #000000;
+  filter: invert(0);
+}
+
+.activity-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 12px 28px rgba(255, 255, 255, 0.08);
+}
+
+.activity-card img {
+  height: 78%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.activity-log-title {
+  background: linear-gradient(270deg, #1e0b04, #ff7700db);
+  margin-left: 50px;
+  border-radius: 4px;
+  width: 30%;
+}
+.activity-log-title p {
+  margin-left: 20px;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: "Cinzel", serif;
+  padding: 3px;
+}
+
+.hr-underline {
+  width: 65vw;
+  margin-left: 50px;
+  border: 2px solid #fff;
+}
+
+@media (max-width: 768px) {
+  .activity-card-items {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+    padding-right: 40px;
+  }
+
+  .activity-log-title {
+    width: 100%;
+    background: transparent;
+  }
+  .hr-underline {
+    width: 75%;
+    margin-left: 20px;
+  }
+
+  .activity-card {
+    height: 140px;
+    width: 200px;
+  }
+  .activity-card-title {
+    font-size: 15px;
+    bottom: 3px;
+  }
+  .arrow {
+    bottom: 6px;
+    right: 15px;
+    font-size: 15px;
+    color: black;
+  }
+  .activity-card-items {
+    gap: 30px;
+    margin-left: 20px;
+  }
+  .activity-log-title {
+    margin-left: 0px;
+  }
+}

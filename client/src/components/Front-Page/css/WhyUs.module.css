@@ -1,0 +1,139 @@
+/* why us section */
+.whyus {
+  margin-top: 100px;
+}
+
+.whyusCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 10%;
+  gap: 50px;
+  background-color: transparent;
+  flex-wrap: wrap;
+  color: #fff;
+}
+
+.whyusImage img,
+.responsiveImage img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.whyusContent {
+  flex: 1;
+  max-width: 600px;
+}
+
+.whyusTitle {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #ff9900;
+  font-family: "Cinzel", serif;
+  position: relative;
+  text-align: left;
+}
+
+.whyusTitle::after {
+  content: "";
+  position: absolute;
+  width: 8%;
+  height: 4px;
+  background-color: #ff9900;
+  left: 0;
+  bottom: -8px;
+  border-radius: 2px;
+}
+
+.whyusParagraph {
+  font-size: 1.1em;
+  line-height: 1.6;
+  padding-top: 2rem;
+  text-align: left;
+}
+
+/* Hide responsive image by default */
+.responsiveImage {
+  display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .whyusCard {
+    padding: 60px 5%;
+  }
+
+  .whyusTitle {
+    font-size: 2em;
+  }
+
+  .whyusParagraph {
+    font-size: 1em;
+  }
+
+  .whyusImage img {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .whyusCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .whyusContent {
+    max-width: 100%;
+  }
+
+  .whyusImage {
+    display: none;
+  }
+
+  .responsiveImage {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .responsiveImage img {
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .whyusTitle {
+    font-size: 1.8em;
+  }
+
+  .whyusParagraph {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .whyusCard {
+    padding: 30px 20px;
+  }
+
+  .whyusTitle {
+    font-size: 1.5em;
+    margin-bottom: 3rem;
+    margin-left: 25px;
+  }
+  .whyusTitle:after {
+    left: 2px;
+  }
+
+  .whyusParagraph {
+    font-size: 0.9em;
+    text-align: left;
+    padding: 25px;
+  }
+
+  .responsiveImage img {
+    max-width: 200px;
+  }
+}
+/* end of why us section */

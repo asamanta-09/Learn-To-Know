@@ -1,0 +1,91 @@
+.card {
+  background-color: white;
+  width: 270px; /* reduced width */
+  height: 330px; /* reduced height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px 0 rgba(117, 111, 111, 0.91),
+    0 6px 20px 0 rgba(48, 44, 44, 0.937);
+  padding: 0 0 10px 0;
+  margin: 15px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.image img {
+  border-radius: 7px 7px 0 0;
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+}
+
+.content {
+  padding: 10px 12px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content h4 {
+  color: #000;
+  font-family: "Lilita One", sans-serif;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.content p {
+  font-size: 14px;
+  color: #000;
+  font-weight: 600;
+  text-align: center;
+  margin-top: auto;
+}
+
+.button {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.button button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e28b20, #ff7700db);
+  color: white;
+  font-size: 14px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button button:hover {
+  background: rgb(240, 240, 240);
+  color: black;
+}
+
+.underline {
+  margin: 5px auto;
+  padding: 0;
+  color: black;
+  width: 60%;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 230px; /* reduced width */
+    height: 290px; /* reduced height */
+  }
+  .image img {
+    height: auto; 
+  }
+  
+  .content h4 {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Lilita+One&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+.course-log {
+  min-height: 300px;
+  width: 70vw;
+  background-color: transparent;
+  color: #e0e0e0;
+}
+
+.hr-underline {
+  width: 65vw;
+  margin-left: 50px;
+  border: 2px solid #fff;
+}
+
+.course-log-title {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
+.course-log-title-h4 {
+  background: linear-gradient(270deg, #1e0b04, #ff7700db);
+  margin-left: 50px;
+  border-radius: 4px;
+  width: 30%;
+}
+.course-log-title-h4 h4 {
+  margin-left: 20px;
+  color: #fff;
+  font-weight: 900;
+  font-family: "Cinzel", serif;
+  padding-top: 5px;
+}
+
+.course-log-title h4 {
+  color: #fff;
+  font-size: 1.4em;
+  font-family: "Cinzel", serif;
+}
+
+.view-all-button {
+  padding: 1px 10px;
+  background: linear-gradient(90deg, #e28b20, #ff7700db);
+  border: 1px solid #555;
+  border-radius: 15px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.view-all-button:hover {
+  transform: scale(1.01);
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.course-cards {
+  display: flex;
+  gap: 50px;
+  margin-left: 50px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.course-card-item {
+  position: relative;
+  height: 200px;
+  width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid white;
+}
+
+.course-card-item img {
+  height: 78%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.course-card-title {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #000000;
+  font-family: "Lilita One", sans-serif;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 12px;
+  right: 18px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #000000;
+  filter: invert(0);
+}
+
+.course-card-item:hover {
+  transform: scale(1.05);
+  transition: 0.7s;
+  box-shadow: 0 8px 20px rgba(177, 176, 175, 0.4);
+}
+
+.notes-section {
+  border-radius: 120px;
+}
+
+.inside-image-notes {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  width: 70%;
+  color: #f5f5f5;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+  .course-log-title {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .view-all-button {
+    display: none;
+  }
+
+  .course-log-title-h4 {
+    width: auto;
+    min-width: 50%;
+    background: transparent;
+    font-size: 13px;
+    margin-left: 0;
+    padding-right: 10px;
+  }
+
+  .hr-underline {
+    width: 100%;
+    margin-left: 20px;
+  }
+
+  .course-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin-left: 20px;
+    width: 98vw;
+    padding-right: 50px;
+  }
+
+  .course-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .course-card-item {
+    height: 150px;
+    width: 200px;
+    flex: 0 0 auto;
+    min-width: 200px;
+  }
+
+  .course-card-title {
+    bottom: 10px;
+    left: 15px;
+    font-size: 15px;
+  }
+
+  .arrow {
+    font-size: 15px;
+  }
+
+  .inside-image-notes {
+    font-size: 18px;
+    width: 90%;
+    word-wrap: break-word;
+  }
+}

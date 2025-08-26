@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Lilita+One&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+.card {
+  background-color: white;
+  width: 300px;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px 0 rgba(117, 111, 111, 0.91),
+    0 6px 20px 0 rgba(48, 44, 44, 0.937);
+  padding: 0 0 10px 0;
+  margin: 20px;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  transition: 0.7s;
+}
+
+.image img {
+  border-radius: 7px;
+  width: 300px;
+}
+
+.content {
+  padding: 4px 13px;
+}
+.content h4 {
+  color: rgb(0, 0, 0);
+  font-family: "Lilita One", sans-serif;
+  text-align: center;
+}
+.content p {
+  font-size: 17px;
+  color: rgb(0, 0, 0);
+  font-weight: 800;
+}
+
+.button {
+  text-align: center;
+}
+.button button {
+  padding: 7px 15px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #e28b20, #ff7700db);
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button button:hover {
+  background: rgb(240, 240, 240);
+  color: rgb(0, 0, 0);
+}
+
+.underline {
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 250px;
+  }
+  .card img {
+    width: 250px;
+  }
+  .content h4 {
+    font-size: 1.4rem;
+  }
+  .content p {
+    font-size: 1rem;
+  }
+  .button button {
+    padding: 7px 15px;
+    font-size: 0.9rem;
+  }
+}
