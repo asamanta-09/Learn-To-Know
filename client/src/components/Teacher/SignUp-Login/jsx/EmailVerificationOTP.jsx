@@ -13,31 +13,36 @@ function EmailVerificationOTPTeacher() {
   const { teacherData } = location.state || {};
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { email: teacherData.email, otp };
-    authApi.post("/teacher/verifyOTP", data)
-      .then((response) => {
-        if (response.data.success === true) {
-          return authApi.post("/teacher/signUp", teacherData)
-        } else {
-          toast.error(response.data?.message || "Something went wrong");
-          throw new Error("Invalid OTP");
-        }
-      })
-      .then((res) => {
-        if (res.data.success === true) {
-          toast.success(res.data?.message);
-          navigate('/teachers/login');
-        } else {
-          toast.error(res.data?.message || "Something went wrong");
-        }
-      })
-      .catch((error) => {
-        console.error('Error during verification/sign up:', error);
-        toast.error(error.data?.message || "Failed : Something went wrong");
-      });
 
+    if (!teacherData) {
+      toast.error("No teacher data found, please restart signup.");
+      navigate("/teachers/signup");
+      return;
+    }
+
+    try {
+      const verifyRes = await authApi.post("/teacher/verifyOTP", { email: teacherData.email, otp });
+
+      if (!verifyRes.data.success) {
+        toast.error(verifyRes.data?.message || "OTP verification failed");
+        return;
+      }
+
+      const signUpRes = await authApi.post("/teacher/signUp", teacherData);
+
+      if (signUpRes.data.success) {
+        toast.success(signUpRes.data?.message || "Signup successful");
+        navigate("/teachers/login");
+      } else {
+        toast.error(signUpRes.data?.message || "Signup failed");
+      }
+
+    } catch (error) {
+      console.error("Error during verification/sign up:", error);
+      toast.error(error.response?.data?.message || "Failed: Something went wrong");
+    }
   };
 
 
