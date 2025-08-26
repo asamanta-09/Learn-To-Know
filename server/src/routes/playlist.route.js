@@ -5,7 +5,7 @@ import { authorized_admin } from "../middlewares/authorized_admin.middleware.js"
 import { addNewPlaylist, getPlaylist } from "../controllers/playlist.controller.js";
 
 const router=Router();
-router.post("/create",authorized_admin,upload.single("image"),addNewPlaylist);
+router.post("/create", authorized_admin, upload.single("image"), addNewPlaylist);
 router.get("/view",auth,getPlaylist);
 
 export default router;

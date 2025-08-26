@@ -33,10 +33,14 @@ const ReferenceUploadForm = ({ onClose }) => {
     formSubmission.append('youtube_link', formData.youtube_link);
 
     try {
-      const response = await protectedApi.post("/playlist/create", {topic:formSubmission.topic,title:formSubmission.title,image:formSubmission.image,youtube_link:formSubmission.youtube_link}, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      const response = await protectedApi.post("/playlist/create", formSubmission, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "multipart/form-data",
+        },
         withCredentials: true,
       });
+
 
       if (response.data?.success) {
         toast.success(response.data?.message || "Reference added successfully");
