@@ -17,10 +17,10 @@ function EmailVerificationOTP() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { email: studentData.email, otp };
-    authApi.post("/student/verifyOTP", data)
+    authApi.post("/student/verifyOTP", { data })
       .then((response) => {
         if (response.data.success === true) {
-          return authApi.post("/student/signUp", studentData)
+          return authApi.post("/student/signUp", { studentData })
         } else {
           toast.error(response.data?.message || "Something went wrong");
           throw new Error("Invalid OTP");
