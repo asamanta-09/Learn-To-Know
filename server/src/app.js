@@ -25,6 +25,9 @@ import admin from "./routes/admin.route.js";
 import notes from "./routes/notes.route.js";
 import playlist from "./routes/playlist.route.js";
 
+app.use("/", (req, res) => {
+  res.send("Server is working");
+});
 app.use("/student", student);
 app.use("/teacher", teacher);
 app.use("/course", course);
