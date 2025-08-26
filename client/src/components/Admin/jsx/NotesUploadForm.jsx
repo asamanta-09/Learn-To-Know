@@ -33,7 +33,8 @@ const NotesUploadForm = ({ onClose }) => {
 
     try {
       const response = await protectedApi.post("/notes/create", formSubmission, { 
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        withCredentials: true,
        });
       if (response.data?.success) {
         onClose();

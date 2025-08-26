@@ -14,7 +14,8 @@ const ProfileCardDropDown = () => {
       label: "Logout", action: async () => {
         try {
           const response = await protectedApi.post("/admin/logout", { 
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+            withCredentials: true,
            });
           if (response.data.success) {
             localStorage.removeItem("token");

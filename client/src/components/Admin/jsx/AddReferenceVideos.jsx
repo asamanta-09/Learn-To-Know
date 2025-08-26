@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import ReferenceUploadForm from './ReferenceUploadForm';
 import styles from '../css/AddReferenceVideos.module.css';
-import  protectedApi  from '../../../api/protectedApi.js';
+import protectedApi from '../../../api/protectedApi.js';
 
 
 const AddReferenceVideos = () => {
@@ -31,17 +31,17 @@ const AddReferenceVideos = () => {
   };
 
 
-useEffect(() => {
-  protectedApi.get("/playlist/view", { 
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-   })
-    .then((response) => {
-      setPlaylist(response.data?.playlist || []);
+  useEffect(() => {
+    protectedApi.get("/playlist/view", {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     })
-    .catch((err) => {
-      console.error("Error fetching playlists:", err);
-    });
-}, []);
+      .then((response) => {
+        setPlaylist(response.data?.playlist || []);
+      })
+      .catch((err) => {
+        console.error("Error fetching playlists:", err);
+      });
+  }, []);
 
 
   return (
