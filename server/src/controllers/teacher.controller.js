@@ -237,7 +237,7 @@ export const generateOTP = async (req, res) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
     otpStore.set(email, { otp, otpExpiry });
-    const subject = "StoryVerse : Verification OTP";
+    const subject = "LearnToKnow : Verification OTP";
     const text = `Hi ${name},\nThis is a verification mail from LearnToKnow.\n\nYour OTP is: ${otp}\nExpires in 10 minutes.`;
     await sendMail(email, subject, text);
     return res
