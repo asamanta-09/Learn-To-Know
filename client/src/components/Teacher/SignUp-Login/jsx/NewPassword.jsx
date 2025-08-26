@@ -13,7 +13,6 @@ function NewPasswordTeacher() {
   const location = useLocation();
   const { email } = location.state || {};
   const navigate = useNavigate();
-  const backendURL = import.meta.env.VITE_BACKEND_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +22,7 @@ function NewPasswordTeacher() {
     }
 
     try {
-      const res = await authApi.patch("/teacher/passwordUpdate", { email, password });
+      const res = await authApi.post("/teacher/passwordUpdate", { email, password });
       if (res.data?.success) {
         toast.success("Password updated successfully");
         toast.info("you are redirecting to login page..");
