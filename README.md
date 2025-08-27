@@ -62,78 +62,12 @@ LearnToKnow is a comprehensive educational platform that connects students, teac
 - **Cloudinary 2.7.0** - Cloud image and file storage
 
 ### Development Tools
-- **ESLint** - Code linting
 - **Nodemon** - Development server with auto-restart
 - **Prettier** - Code formatting
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB database
-- Cloudinary account (for file storage)
-- Email service (for OTP functionality)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/asamanta-09/learntoknow.git
-   cd learntoknow
-   ```
-
-2. **Install dependencies**
-   ```bash
-   # Install client dependencies
-   cd client
-   npm install
-
-   # Install server dependencies
-   cd ../server
-   npm install
-   ```
-
-3. **Environment Setup**
-
-   Create `.env` file in the server directory:
-   ```env
-   # Database
-   MONGODB_URI=your_mongodb_connection_string
-
-   # JWT Secrets
-   ACCESS_TOKEN_SECRET=your_access_token_secret
-   REFRESH_TOKEN_SECRET=your_refresh_token_secret
-
-   # Cloudinary
-   CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-   CLOUDINARY_API_KEY=your_cloudinary_api_key
-   CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-
-   # Email (Nodemailer)
-   MAIL_USER=your_email
-   MAIL_PASS=your_email_password
-
-   # Server
-   PORT=8000
-   ```
-
-   Create `.env` file in the client directory:
-   ```env
-   VITE_BACKEND_URL=backend_url
-   ```
-
-4. **Run the application**
-   ```bash
-   # Start the server (from server directory)
-   npm run dev
-
-   # Start the client (from client directory)
-   npm run dev or npm start
-   ```
-
-5. **Access the application**
-   - Frontend: https://ltk.vercel.app
-   - Backend: https://learn-to-know-backend.vercel.app
+## 🚀 Access the application
+- Frontend: https://ltk.vercel.app
+- Backend: https://learn-to-know-backend.vercel.app
 
 ## 📁 Project Structure
 
@@ -211,17 +145,9 @@ learntoknow/
 - Use MongoDB Atlas for cloud database
 - Configure connection string in environment variables
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 ## 👥 Author
 
-- **Ankan** - - [asamanta-09](https://github.com/asamanta-09)
+- **Ankan** - [asamanta-09](https://github.com/asamanta-09)
 
 ## 📞 Support
 
