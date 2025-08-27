@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from "../css/LoginForm.module.css";
 import { IonIcon } from "@ionic/react";
@@ -12,10 +12,12 @@ function LoginPageTeacher() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await authApi.post("/teacher/login", { email, password });
 
@@ -30,6 +32,8 @@ function LoginPageTeacher() {
     } catch (error) {
       console.error('Error sending login data:', error);
       toast.error("Invalid email or password. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -94,7 +98,9 @@ function LoginPageTeacher() {
               <Link to="/teachers/forget-password">Forgot Password?</Link>
             </div>
             {error && <p className={styles.login_error_message}>{error}</p>}
-            <button type="submit" className={styles.login_btn}>Login</button>
+            <button type="submit" className={styles.login_btn} disabled={loading}>
+              {loading ? 'Logging in...' : 'Login'}
+            </button>
             <div className={styles.login_register_link}>
               <p>Not a member? <Link to="/teachers/signup">Sign Up</Link></p>
             </div>

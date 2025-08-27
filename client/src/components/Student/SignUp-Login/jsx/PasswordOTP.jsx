@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import styles from "../css/EnterOTP.module.css";
 import { IonIcon } from "@ionic/react";
@@ -10,26 +10,29 @@ import { authApi } from '../../../../api/authApi.js';
 function PasswordOTP() {
   const [otp, setOTP] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const { email } = location.state || {};
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    authApi.post("/student/verifyOTP", { email, otp })
-      .then((response) => {
-        if (response.data.success === true) {
-          toast.success(response.data?.message);
-          navigate('/students/reset-password', { state: { email } });
-        } else {
-          toast.error(response.data?.message);
-          throw new Error("Invalid OTP");
-        }
-      })
-      .catch((error) => {
-        console.error('Error during OTP verification:', error);
-        toast.error("Failed: Someting went wrong");
-      });
+    setLoading(true);
+    try {
+      const response = await authApi.post("/student/verifyOTP", { email, otp });
+      if (response.data.success === true) {
+        toast.success(response.data?.message);
+        navigate('/students/reset-password', { state: { email } });
+      } else {
+        toast.error(response.data?.message);
+        throw new Error("Invalid OTP");
+      }
+    } catch (error) {
+      console.error('Error during OTP verification:', error);
+      toast.error("Failed: Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -52,7 +55,7 @@ function PasswordOTP() {
           <Link to="/contact-us">Contact Us</Link>
           <Link to="/students/signup">Sign Up</Link>
         </nav>
-      </header> 
+      </header>
 
       {/* Sidebar for small screens */}
       <div className={`${styles.sidebar} ${sidebarOpen ? styles.active : ''}`}>
@@ -87,7 +90,9 @@ function PasswordOTP() {
               <input type="text" id="otp" value={otp} required onChange={(e) => setOTP(e.target.value)} />
               <label htmlFor="otp">Enter OTP</label>
             </div>
-            <button type="submit" className={styles.enterotp_btn}> Submit </button>
+            <button type="submit" className={styles.enterotp_btn} disabled={loading}>
+              {loading ? 'Verifying...' : 'Submit'}
+            </button>
             <div className={styles.enterotp_register_link}>
               <p>
                 <IonIcon icon={arrowBackOutline} style={{ marginRight: "6px", verticalAlign: "middle" }} />

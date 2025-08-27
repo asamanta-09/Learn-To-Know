@@ -10,6 +10,7 @@ function NewPasswordTeacher() {
   const [password, setPassword] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const { email } = location.state || {};
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ function NewPasswordTeacher() {
       return;
     }
 
+    setLoading(true);
     try {
       const res = await authApi.post("/teacher/passwordUpdate", { email, password });
       if (res.data?.success) {
@@ -33,6 +35,8 @@ function NewPasswordTeacher() {
     } catch (error) {
       console.error('Error in updating password:', error);
       toast.error("Something went wrong while updating the password");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -100,7 +104,9 @@ function NewPasswordTeacher() {
               <input type="password" id="confirmpassword" value={confirmPassword} required onChange={(e) => setConfirmPassword(e.target.value)} />
               <label htmlFor="confirmpassword">Confirm Password</label>
             </div>
-            <button type="submit" className={styles.newpassword_btn}> Update </button>
+            <button type="submit" className={styles.newpassword_btn} disabled={loading}>
+              {loading ? 'Updating...' : 'Update'}
+            </button>
             <div className={styles.newpassword_register_link}>
               <p>
                 Go back to Login? <Link to="/teachers/login">Login</Link>

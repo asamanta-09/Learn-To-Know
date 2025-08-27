@@ -9,6 +9,7 @@ import { authApi } from "../../../../api/authApi.js"
 function EmailVerificationOTPTeacher() {
   const [otp, setOTP] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const { teacherData } = location.state || {};
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ function EmailVerificationOTPTeacher() {
       return;
     }
 
+    setLoading(true);
     try {
       const verifyRes = await authApi.post("/teacher/verifyOTP", { email: teacherData.email, otp });
 
@@ -42,6 +44,8 @@ function EmailVerificationOTPTeacher() {
     } catch (error) {
       console.error("Error during verification/sign up:", error);
       toast.error(error.response?.data?.message || "Failed: Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -103,7 +107,9 @@ function EmailVerificationOTPTeacher() {
               <input type="text" id="otp" value={otp} required onChange={(e) => setOTP(e.target.value)} />
               <label htmlFor="otp">Enter OTP</label>
             </div>
-            <button type="submit" className={styles.enterotp_btn}> Submit </button>
+            <button type="submit" className={styles.enterotp_btn} disabled={loading}>
+              {loading ? 'Verifying...' : 'Submit'}
+            </button>
             <div className={styles.enterotp_register_link}>
               <p>
                 <IonIcon icon={arrowBackOutline} style={{ marginRight: "6px", verticalAlign: "middle" }} />

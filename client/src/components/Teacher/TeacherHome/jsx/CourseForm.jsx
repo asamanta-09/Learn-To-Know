@@ -19,6 +19,7 @@ const CourseForm = ({ onClose, onSubmit }) => {
     demovideo: '',
     thumbnail: null
   });
+  const [loading, setLoading] = useState(false);
   const email = localStorage.getItem('email');
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -31,6 +32,7 @@ const CourseForm = ({ onClose, onSubmit }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const updatedDemoLink = formData.demovideo.replace('view?usp=drive_link', 'preview');
 
@@ -61,13 +63,15 @@ const CourseForm = ({ onClose, onSubmit }) => {
       const response = await protectedApi.post("/course/createCourse", submissionData, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
-      if(response.data?.success){
+      if (response.data?.success) {
         toast.success(response.data?.message || "Course added successfully");
         onSubmit();
       }
     } catch (error) {
       console.error('Upload error:', error.response?.data || error.message);
       toast.error("Failed: Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -150,7 +154,9 @@ const CourseForm = ({ onClose, onSubmit }) => {
                 <input type="file" name="thumbnail" id="fileUpload" className={styles.floatingInput} onChange={handleChange} />
                 <label htmlFor="fileUpload" className={styles.floatingLabel} required >Upload Photo</label>
               </div>
-              <button type="submit" className={styles.submitButton}>Create</button>
+              <button type="submit" className={styles.submitButton} disabled={loading}>
+                {loading ? 'Creating...' : 'Create'}
+              </button>
             </div>
           </form>
         </div>

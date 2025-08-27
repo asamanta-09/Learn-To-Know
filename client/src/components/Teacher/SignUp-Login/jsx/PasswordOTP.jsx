@@ -2,33 +2,36 @@ import { useState } from "react";
 import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { IonIcon } from "@ionic/react";
-import { logoFirebase, keyOutline, arrowBackOutline ,closeOutline, menuOutline} from "ionicons/icons";
+import { logoFirebase, keyOutline, arrowBackOutline, closeOutline, menuOutline } from "ionicons/icons";
 import styles from "../css/EnterOTP.module.css";
 import { authApi } from "../../../../api/authApi.js"
 
 function PasswordOTPTeacher() {
   const [otp, setOTP] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const { email } = location.state || {};
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    authApi.post("/teacher/verifyOTP", { email, otp })
-      .then((response) => {
-        if (response.data.success === true) {
-          toast.success("OTP verified");
-          navigate('/teachers/reset-password', { state: { email } });
-        } else {
-          toast.warn(response.data.message);
-          throw new Error("Invalid OTP");
-        }
-      })
-      .catch((error) => {
-        console.error('Error during OTP verification:', error);
-        toast.error("Failed: Something went wrong");
-      });
+    setLoading(true);
+    try {
+      const response = await authApi.post("/teacher/verifyOTP", { email, otp });
+      if (response.data.success === true) {
+        toast.success("OTP verified");
+        navigate('/teachers/reset-password', { state: { email } });
+      } else {
+        toast.warn(response.data.message);
+        throw new Error("Invalid OTP");
+      }
+    } catch (error) {
+      console.error('Error during OTP verification:', error);
+      toast.error("Failed: Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -84,7 +87,9 @@ function PasswordOTPTeacher() {
               <input type="text" id="otp" value={otp} required onChange={(e) => setOTP(e.target.value)} />
               <label htmlFor="otp">Enter OTP</label>
             </div>
-            <button type="submit" className={styles.enterotp_btn}> Submit </button>
+            <button type="submit" className={styles.enterotp_btn} disabled={loading}>
+              {loading ? 'Verifying...' : 'Submit'}
+            </button>
             <div className={styles.enterotp_register_link}>
               <p>
                 <IonIcon icon={arrowBackOutline} style={{ marginRight: "6px", verticalAlign: "middle" }} />

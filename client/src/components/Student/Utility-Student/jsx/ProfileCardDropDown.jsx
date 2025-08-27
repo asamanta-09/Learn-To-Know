@@ -1,18 +1,23 @@
+import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import styles from '../css/ProfileCardDropDown.module.css';
 import { IoIosArrowForward } from "react-icons/io";
-import  protectedApi  from '../../../../api/protectedApi.js';
+import protectedApi from '../../../../api/protectedApi.js';
 
 const ProfileCardDropDown = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
   const options = [
     { label: "View Profile", action: () => navigate('/profile') },
     { label: "Edit Profile", action: () => navigate('/edit-profile') },
     { label: "Settings and Privacy", action: () => navigate('/settings') },
     {
       label: "Logout", action: async () => {
+        if (loading) return; // Prevent multiple clicks
+        setLoading(true);
         try {
           const response = await protectedApi.post("/student/logout", {}, {
             headers: {
@@ -22,15 +27,17 @@ const ProfileCardDropDown = () => {
           if (response.data?.success) {
             localStorage.removeItem("token");
             localStorage.removeItem("email");
-            toast.success(response.data?.message || "Logged Out Successfully"); 
+            toast.success(response.data?.message || "Logged Out Successfully");
             navigate("/students/login");
           }
-          else{
+          else {
             toast.error(response.data?.message);
           }
         } catch (err) {
           console.error("Logout failed:", err);
           toast.error("Something went wrong");
+        } finally {
+          setLoading(false);
         }
       }
     }
@@ -48,10 +55,10 @@ const ProfileCardDropDown = () => {
             <div
               className={styles['profile-menu-item']}
               onClick={item.action}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: loading && item.label === "Logout" ? "not-allowed" : "pointer" }}
             >
               <span className={styles['profile-item-name']}>
-                {item.label}
+                {loading && item.label === "Logout" ? "Logging out..." : item.label}
                 <IoIosArrowForward />
               </span>
             </div>

@@ -1,18 +1,20 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import styles from '../css/AdminLogin.module.css';
-import {authApi} from '../../../api/authApi.js';
+import { authApi } from '../../../api/authApi.js';
 
 const AdminLogin = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleForm = async (e) => {
     e.preventDefault();
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
+    setLoading(true);
 
     try {
       localStorage.removeItem('token'); // clear old token
@@ -28,6 +30,8 @@ const AdminLogin = () => {
     } catch (error) {
       console.error('Error sending login data:', error);
       toast.error(error.response?.data?.message || "Invalid credentials");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -43,7 +47,9 @@ const AdminLogin = () => {
             <input type="password" name="password" placeholder="Password" ref={passwordRef} required className={styles.input} />
           </div>
           <div className={styles.buttonWrapper}>
-            <button type="submit" className={styles.button} > Login </button>
+            <button type="submit" className={styles.button} disabled={loading}>
+              {loading ? 'Logging in...' : 'Login'}
+            </button>
           </div>
         </form>
       </div>

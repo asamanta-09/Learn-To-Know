@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import { IonIcon } from "@ionic/react";
 import { mailOutline, lockClosedOutline, logoFirebase, closeOutline, menuOutline } from 'ionicons/icons';
 import styles from "../css/LoginForm.module.css";
@@ -11,13 +11,15 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
+    setLoading(true);
     try {
       localStorage.removeItem('token'); // clear old token
-      const response = await authApi.post( "/student/login", { email, password });
+      const response = await authApi.post("/student/login", { email, password });
       if (response.data.success) {
         localStorage.setItem('token', response.data.accessToken);
         localStorage.setItem('email', email);
@@ -30,6 +32,8 @@ function LoginPage() {
     } catch (error) {
       console.error('Error sending login data:', error);
       toast.error("Failed : Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -97,7 +101,9 @@ function LoginPage() {
             </div>
             {/* Error message display */}
             {error && <p className={styles.login_error_message}>{error}</p>}
-            <button type="submit" className={styles.login_btn}> Login </button>
+            <button type="submit" className={styles.login_btn} disabled={loading}>
+              {loading ? 'Logging in...' : 'Login'}
+            </button>
             <div className={styles.login_register_link}>
               <p> Not a member? <Link to="/students/signup">Sign Up</Link> </p>
             </div>
