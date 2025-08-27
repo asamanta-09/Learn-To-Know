@@ -78,7 +78,7 @@ LearnToKnow is a comprehensive educational platform that connects students, teac
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/learntoknow.git
+   git clone https://github.com/asamanta-09/learntoknow.git
    cd learntoknow
    ```
 
@@ -110,8 +110,6 @@ LearnToKnow is a comprehensive educational platform that connects students, teac
    CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
    # Email (Nodemailer)
-   MAIL_HOST=your_smtp_host
-   MAIL_PORT=your_smtp_port
    MAIL_USER=your_email
    MAIL_PASS=your_email_password
 
@@ -121,7 +119,7 @@ LearnToKnow is a comprehensive educational platform that connects students, teac
 
    Create `.env` file in the client directory:
    ```env
-   VITE_BACKEND_URL=http://localhost:8000
+   VITE_BACKEND_URL=backend_url
    ```
 
 4. **Run the application**
@@ -130,12 +128,12 @@ LearnToKnow is a comprehensive educational platform that connects students, teac
    npm run dev
 
    # Start the client (from client directory)
-   npm run dev
+   npm run dev or npm start
    ```
 
 5. **Access the application**
-   - Frontend: http://localhost:5173
-   - Backend: http://localhost:8000
+   - Frontend: https://ltk.vercel.app
+   - Backend: https://learn-to-know-backend.vercel.app
 
 ## 📁 Project Structure
 
@@ -188,15 +186,7 @@ learntoknow/
 
 ## 🎨 Key Features Implementation
 
-### Loading States
-All buttons with backend requests include loading states for better user experience:
-- Login/Registration forms show "Logging in...", "Verifying...", etc.
-- File uploads show "Uploading..." progress
-- Course creation shows "Creating..." status
-- Logout shows "Logging out..." feedback
-
 ### Responsive Design
-- Mobile-first approach with Bootstrap
 - Responsive navigation with hamburger menu
 - Adaptive layouts for all screen sizes
 
@@ -229,13 +219,9 @@ All buttons with backend requests include loading states for better user experie
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📝 License
+## 👥 Author
 
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Authors
-
-- **Ankan** - *Initial work* - [YourGitHub](https://github.com/yourusername)
+- **Ankan** - - [asamanta-09](https://github.com/asamanta-09)
 
 ## 📞 Support
 
