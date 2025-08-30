@@ -24,7 +24,7 @@ const CourseDetailsPage = () => {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           });
-          setTeacher(response.data.teacher ||null);
+          setTeacher(response.data.teacher || null);
         } catch (error) {
           console.error('Error fetching teacher details:', error);
           setTeacher(null);
