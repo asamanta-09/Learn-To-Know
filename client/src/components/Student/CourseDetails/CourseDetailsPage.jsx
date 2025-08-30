@@ -19,12 +19,12 @@ const CourseDetailsPage = () => {
     const fetchTeacherDetails = async () => {
       if (courseDetails.created_by?.[0]) {
         try {
-          const response = await protectedApi.get("/teacher/getTeacherDetails?email=${courseDetails.created_by[0]}", {
+          const response = await protectedApi.get(`/teacher/getTeacherDetails?email=${courseDetails.created_by[0]}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           });
-          setTeacher(response.data || null);
+          setTeacher(response.data.teacher || null);
         } catch (error) {
           console.error('Error fetching teacher details:', error);
           setTeacher(null);
